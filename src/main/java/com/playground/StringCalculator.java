@@ -4,7 +4,7 @@ public class StringCalculator {
     private final String[] strArr;
 
     public StringCalculator(String inputString) {
-        strArr = inputString.split(",");
+        strArr = inputString.split(",|:");
     }
 
     public int plus() {
