@@ -23,11 +23,17 @@ public class StringCalculator {
 
     public int plus() {
         int sum = 0;
-
         for (String str : strArr) {
+            checkStringValidation(str);
             sum += Integer.parseInt(str);
         }
 
         return sum;
+    }
+
+    private void checkStringValidation(String str) {
+        if (!Character.isDigit(str.charAt(0)) || Integer.parseInt(str) < 0) {
+            throw new RuntimeException();
+        }
     }
 }
