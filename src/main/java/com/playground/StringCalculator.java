@@ -5,33 +5,34 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    private final String[] strArr;
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
 
-    public StringCalculator(String inputString) {
-        Pattern pattern = Pattern.compile("//(.)\n(.*)");
-        Matcher matcher = pattern.matcher(inputString);
+    public static int SplitAndAdd(String inputString) {
+        String[] components = splitByDelimiter(inputString);
 
-        if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
-            strArr = matcher.group(2).split(customDelimiter);
-        } else {
-            strArr = inputString.split(",|:");
-        }
-
-    }
-
-    public int plus() {
         int sum = 0;
-        for (String str : strArr) {
-            checkStringValidation(str);
-            sum += Integer.parseInt(str);
+        for (String component : components) {
+            checkStringValidation(component);
+            sum += Integer.parseInt(component);
         }
 
         return sum;
     }
 
-    private void checkStringValidation(String str) {
+    private static String[] splitByDelimiter(String inputString) {
+        Matcher matcher = CUSTOM_PATTERN.matcher(inputString);
+
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            return matcher.group(2).split(customDelimiter);
+        }
+
+        return inputString.split(",|:");
+    }
+
+
+    private static void checkStringValidation(String str) {
         if (!Character.isDigit(str.charAt(0)) || Integer.parseInt(str) < 0) {
             throw new RuntimeException();
         }
