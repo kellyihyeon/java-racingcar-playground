@@ -8,12 +8,16 @@ public class StringCalculator {
     private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
 
-    public static int SplitAndAdd(String inputString) {
+    public static int splitAndAdd(String inputString) {
+        if (isNullOrEmpty(inputString)) {
+            return 0;
+        }
+
         String[] components = splitByDelimiter(inputString);
 
         int sum = 0;
         for (String component : components) {
-            checkStringValidation(component);
+            checkComponentValidation(component);
             sum += Integer.parseInt(component);
         }
 
@@ -32,9 +36,13 @@ public class StringCalculator {
     }
 
 
-    private static void checkStringValidation(String str) {
+    private static void checkComponentValidation(String str) {
         if (!Character.isDigit(str.charAt(0)) || Integer.parseInt(str) < 0) {
             throw new RuntimeException();
         }
+    }
+
+    private static boolean isNullOrEmpty(String inputString) {
+        return inputString == null || inputString.isEmpty();
     }
 }
