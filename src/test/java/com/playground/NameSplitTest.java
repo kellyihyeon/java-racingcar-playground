@@ -1,5 +1,6 @@
 package com.playground;
 
+import com.playground.utils.NameSplit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

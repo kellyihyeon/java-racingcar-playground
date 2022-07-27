@@ -1,4 +1,4 @@
-package com.playground;
+package com.playground.utils;
 
 public class NameSplit {
 
