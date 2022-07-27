@@ -31,10 +31,10 @@ public class Cars {
     }
 
     public List<Car> getWinner() {
-        List<Car> winners = new ArrayList<>();
         Collections.sort(cars);
-        log.info("자동차의 max 포지션은 {}", cars.get(0).getPosition());
+        log.info("자동차의 max position 은 {}", getMax());
 
+        List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             if (isMax(car)) {
                 winners.add(car);
@@ -44,8 +44,11 @@ public class Cars {
     }
 
     private boolean isMax(Car car) {
-        int max = cars.get(0).getPosition();
-        return car.getPosition() == max;
+        return car.getPosition() == getMax();
+    }
+
+    private int getMax() {
+        return cars.get(0).getPosition();
     }
 
     public List<Car> getCars() {
