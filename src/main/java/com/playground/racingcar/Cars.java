@@ -24,9 +24,9 @@ public class Cars {
     public void play() {
         for (Car car : cars) {
             int random = new Random().nextInt(10);
-            log.info("{}의 position: {}, random 값: {}", car.getName(), car.getPosition(), random);
+            log.info("{}의 position: {}, random 값: {}", car.getName(), car.getPosition().getNumber(), random);
             car.move(random);
-            log.info("└> random 값을 반영한 position: {}", car.getPosition());
+            log.info("└> random 값을 반영한 position: {}", car.getPosition().getNumber());
         }
     }
 
@@ -44,11 +44,11 @@ public class Cars {
     }
 
     private boolean isMax(Car car) {
-        return car.getPosition() == getMax();
+        return car.getPosition().getNumber() == getMax();
     }
 
     private int getMax() {
-        return cars.get(0).getPosition();
+        return cars.get(0).getPosition().getNumber();
     }
 
     public List<Car> getCars() {

@@ -1,20 +1,21 @@
 package com.playground.racingcar;
 
+
 public class Car implements Comparable<Car>{
 
     private final CarName name;
-    private int position;
+    private final CarPosition position;
 
 
     public Car(CarName name) {
         this.name = name;
-        this.position = 1;
+        this.position = new CarPosition(1);
     }
 
     public void move(int condition) {
         validateCondition(condition);
         if (condition >= 4) {
-            position++;
+            position.move();
         }
     }
 
@@ -28,7 +29,7 @@ public class Car implements Comparable<Car>{
         return condition < 0 || condition > 9;
     }
 
-    public int getPosition() {
+    public CarPosition getPosition() {
         return position;
     }
 
@@ -38,7 +39,7 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car o) {
-        return o.position - this.position;
+        return o.position.getNumber() - this.position.getNumber();
     }
 
 }

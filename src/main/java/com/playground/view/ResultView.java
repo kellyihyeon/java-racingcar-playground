@@ -17,11 +17,16 @@ public class ResultView {
 
     private void play(int count) {
         System.out.println("실행 결과");
+        showResult();
         for (int i = 0; i < count; i++) {
             cars.play();
-            for (Car car : cars.getCars()) {
-                System.out.println(car.getName() + " : " + car.getPosition());
-            }
+            showResult();
+        }
+    }
+
+    private void showResult() {
+        for (Car car : cars.getCars()) {
+            System.out.println(car.getName() + " : " + car.getPosition().show());
         }
     }
 
