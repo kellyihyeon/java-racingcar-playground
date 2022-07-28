@@ -1,6 +1,5 @@
-package com.playground;
+package com.playground.racingcar;
 
-import com.playground.racingcar.CarName;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
